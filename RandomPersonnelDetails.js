@@ -16,3 +16,30 @@ function getRandomDateOfBirth()
     
     return `${yearComponent}-${monthComponent}-${dayComponent}`; 
 }
+
+function generateRandomPostcode() {
+    var postcode = "";
+    var digits = "0123456789";
+    var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    // Generate random letters for the first part of the postcode
+    for (var i = 0; i < 3; i++) {
+        var randomIndex = Math.floor(Math.random() * letters.length);
+        postcode += letters[randomIndex];
+    }
+
+    // Insert space after the first part of the postcode
+    postcode += " ";
+
+    // Generate random digits and letters for the second part of the postcode
+    for (var j = 0; j < 3; j++) {
+        var randomIndex = Math.floor(Math.random() * (digits.length + letters.length));
+        if (randomIndex < digits.length) {
+            postcode += digits[randomIndex];
+        } else {
+            postcode += letters[randomIndex - digits.length];
+        }
+    }
+
+    return postcode;
+}
